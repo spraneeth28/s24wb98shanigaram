@@ -10,4 +10,9 @@ block content
 
     div(class="row")
       each f, index in house
-        div(class="col-sm-2" ) #{f.house_number}, #{f.type_of_house}, #{f.location}
+        div(class="col-sm-2", onclick=`buy(${index})` ) #{f.house_number}, #{f.type_of_house}, #{f.location}
+        script.
+          function buy(index)
+          {
+            alert(`you purchased Item: ${index+1}`)
+          }
