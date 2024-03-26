@@ -8,11 +8,11 @@ block content
   - let rows=Number(query.rows)
   - let cols=Number(query.cols)
  
-  if !(Number.isInteger(rows)) && !(Number.isInteger(cols))
+  if !(Number.isInteger(rows)) || !(Number.isInteger(cols))
     p given rows or columns are incorrect
-  else if (rows<3) && (rows>13)
+  else if (rows<3) || (rows>13)
     p given rows are not in the range
-  else if (cols<3) && (cols>13)
+  else if (cols<3) || (cols>13)
     p given cols are not in  range
   else
    table#outer
@@ -20,11 +20,11 @@ block content
         tr#middle
          - for(let j=0; j<cols; j++){
             if(i==j)
-                td 1
-            else if ((i == j + 1))
-                td 2
-            else if (i === j - 1)
-                td #{i}
+                td #{i+1}
+            else if ((i < j ))
+                td #{i+1}
+            else if (i > j )
+                td #{j+1}
             else
                 td 0
          -}
